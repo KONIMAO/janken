@@ -1,0 +1,254 @@
+html{
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
+}
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    color: #333333;
+    font-size: 3.2rem;
+    background: #e6e1e2;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+header{
+    background-color: #fff;
+    text-align: center;
+    padding: 1% 1%;
+    width: 100%;
+    margin-top: 0%;
+}
+
+.header{
+    background-color: #451722;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 3.2rem;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+
+main{
+    border-bottom:1px solid #ccc;
+}
+
+.text_center{
+    text-align: center;
+}
+
+.text_bold{
+    font-weight: bold;
+}
+/* 電車走る */
+
+.train_run{
+        opacity: 1;
+        -webkit-transform-origin: 0px 0px;
+        -ms-transform-origin: 0px 0px;
+        transform-origin: 0px 0px;
+        -webkit-animation-name: Drop;
+        animation-name: Drop;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        left: 90px;
+        -webkit-animation-duration: 20s;
+        animation-duration: 20s;
+        padding-top: 2%;
+        }
+
+        @-webkit-keyframes Drop {
+            0% {
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+                opacity: 0.8;
+            }
+        
+            50% {
+                -webkit-transform: translateX(50%);
+                transform: translateX(500%);
+                opacity: 1;
+            }
+        
+            100% {
+                -webkit-transform: translateX(100%);
+                transform: translateX(1000%);
+                opacity: 0.8;
+            }
+        }
+        
+        @keyframes Drop {
+            0% {
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+                opacity: 0.8;
+            }
+        
+            50% {
+                -webkit-transform: translateX(50%);
+                transform: translateX(500%);
+                opacity: 1;
+            }
+        
+            100% {
+                -webkit-transform: translateX(100%);
+                transform: translateX(1000%);
+                opacity: 0.8;
+            }
+        }
+
+footer{
+    background-color: #451722;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+    color: #fff;
+    font-size: 2.4rem;
+    padding: 1%;
+    margin-bottom: 0%;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+
+
+
+ul{
+    padding: 0;
+    display:flex;  /* 定義 */
+    table-layout: fixed;
+    width:90%;
+    margin: auto;
+}
+
+li{
+    text-align: left;
+    list-style-type:none;
+    display:flex;
+    cursor: pointer;
+    padding: 0 auto;
+    height: 20%;
+}
+
+ul li img{
+    vertical-align: middle;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+.rule{
+    /* margin-left: 5%; */
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rule p{
+    padding: 4% auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wid50{
+    width: 50%;
+}
+
+/* サイコロ振る */
+.pull{
+    width: 20%;
+    left: 10%; 
+    display: block;
+    margin: auto;
+    margin-bottom: 1%;
+}
+
+.pull:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+/* サイコロ結果 */
+.dice_wrapper{
+    font-size: 4.2rem;
+    /* background-color: #45172233; */
+    border-color: #451722;
+    border-width: 2px;
+}
+
+.dice{
+    /* background: #451722; */
+    margin: 1% auto 2% auto;
+
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+.dice_result{
+    display: block;
+    margin: 2% auto;
+}
+
+
+/* 電車の駒 */
+.map{
+    margin-bottom: 1%;
+    border-color: #451722;
+    border-width: 2px;
+    background-color: #fff;
+
+}
+
+.table{
+    padding-top: 1%
+}
+
+.table td{
+    vertical-align: middle;
+    font-size: 4.2rem;
+}
+
+.table td img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+/* すごろくだい */
+.station{
+    margin-left:4%;
+    padding: 1% 0% 1% 0;
+}
+
+
+
+/* 結果発表 */
+
+.happyou{
+    padding-top: 1%;
+    padding-left: 5%;
+}
+
+
+.senro{
+    padding-left: 4%;
+}
+
+.result{
+    font-weight: bold;
+    color: red;
+    font-size: 4.8rem;
+}
+.issue{
+    height: 30%;
+    width: 100%;
+    margin: 3% auto 0 auto;
+    padding: 1% auto 5% 1%;
+    background-color: #fff;
+    height: 15%;
+}
+
+
+.location{
+    /* background-color: #45172233 */
+}
