@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sugoroku.css">
+<title>阪急電車すごろく</title>
+</head>
+<body>
+
+<header class="header">
+    <h1>阪急電車すごろく</h1>
+    <h2>神戸線</h2>
+
+</header>
+
+<main>
+<!--電車走る-->
+    <img src="./img/train3.png" alt="3両電車" class="train_run" width="">
+
+<!-- ルール -->
+<div class="rule text_center">
+   <h2 class="text_center"> ルール</h2>
+   
+   <p class="text_center">
+    サイコロを振って、出た目の数だけ阪急電車が進みます。
+    <br>早く大阪梅田駅に着いた人が勝ちです。
+    <br>さあ、早速、下のサイコロを振ってみましょう!
+    </p>
+</div>
+
+
+
+
+<!-- サイコロ -->
+<div class="dice_wrapper">
+    <img src="./img/dice-start.png" alt="さいころスタート" id="pull" class="pull">
+    <table width="80%" class="dice">
+        <tr>
+            <td width="40%" class="text_center text_bold ">YOU</td>
+            <td width="40%" class="text_center text_bold">PC</td>
+        </tr>
+        <tr>
+            <td width="40%"><img src="./img/question_mark.png" alt="サイコロ" id="sainome_me" class="dice_result"></td>
+            <td width="40%"><img src="./img/question_mark.png" alt="サイコロ" id="sainome_you" class="dice_result"></td>
+        </tr>
+    </table>
+</div>
+
+<!-- すごろくのマス -->
+<div class="map">
+<table border="0" width="100%" class="table">
+    <!-- 自分の駒 -->
+    <tr>
+        <td width="4%" class="text_center">YOU</td>
+        <td width="6%"><img src="./img/train-side.png" alt="" id="0me"></td>
+        <td width="6%"><img src="" alt="" id="1me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="2me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="3me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="4me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="5me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="6me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="7me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="8me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="9me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="10me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="11me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="12me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="13me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="14me" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="15me" class="koma"></td>
+    </tr>
+</table>
+
+
+<!-- 線路 -->
+<img src="./img/senro.png" alt="" width="96%" left="4%" class="senro">
+
+<!-- 電車の路線図(画像) -->
+<img src="./img/station.png" alt="" width="96%" class="station">
+
+<table border="0" width="100%" class="table">
+    <!-- 相手の駒 -->
+    <tr>
+        <td width="4%" class="text_center">PC</td>
+        <td width="6%"><img src="./img/train-side.png" alt="" id="0you"></td>
+        <td width="6%"><img src="" alt="" id="1you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="2you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="3you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="4you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="5you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="6you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="7you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="8you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="9you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="10you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="11you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="12you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="13you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="14you" class="koma"></td>
+        <td width="6%"><img src="" alt="" id="15you" class="koma"></td>
+    </tr>
+</table>
+
+<!-- 線路 -->
+<img src="./img/senro.png" alt="" width="96%" left="4%" class="senro">
+</div>
+
+
+<!-- 現在地 -->
+<div>
+<ul class="location">
+    <li class="wid50"><p id="location">あなたの現在地は「神戸三宮駅」です。<br>(兵庫県神戸市中央区)<br><br>北野異人館やメリケンパーク(BE KOBEモニュメントやポートタワーがあります)が徒歩圏内にあり、多くの人々で賑わっています。</p></li>
+    <li class="wid50"><img src="./img/0station.jpeg" alt="" id="station_img" width="30%"></li>
+
+</ul>
+</div>
+    
+<!-- 勝敗 -->
+<table class="issue">
+    <tr>
+        <td class="happyou">勝負の行方は…
+        </td>
+    </tr>
+    <tr> 
+        <td><p id="echo" class="result text_center">?</p></td>
+    </tr>
+</table>
+
+</main>
+
+<footer>HANKYU SUGOROKU</footer>
+<script>
+    // ポジション定義
+    let total_me=0;
+    let total_you=0;
+
+$('#pull').on('click', function Saikoro(){
+
+    // サイコロ投げる
+    let num_me = Math.ceil(Math.random()*6)
+    let num_you = Math.ceil(Math.random()*6)
+
+    // 数字＜15まで
+    if (total_me<15) {
+        total_me = total_me + num_me;
+        console.log(total_me);
+    }
+
+    if(total_me>14){
+        total_me= 15
+        console.log(total_me);
+    }
+
+    if (total_you<15) {
+        total_you = total_you + num_you;
+        console.log(total_you);
+    }
+
+    if(total_you>14){
+        total_you= 15
+        console.log(total_you);
+    }
+
+
+
+    // 勝敗判定
+    if(total_me>=15 && total_you<15){
+    $('#echo').html('YOU WIN!! <br>あなたが先に大阪梅田に到着しました。');
+    $('#pull').prop('disabled',true);
+    }
+    if (total_me<15 && total_you>=15) {
+    $('#echo').html('YOU LOSE!!<br>相手が先に大阪梅田に到着しました。');
+    $('#pull').prop('disabled',true);
+    }
+    if (total_me>=15 && total_you>=15) {
+    $('#echo').html('DRAW!<br>相手と同時に大阪梅田に到着しました。');
+    $('#pull').prop('disabled',true);
+    }
+
+    // コマ（電車）を表示・それまでのコマを非表示
+    document.getElementById("sainome_me").src= "./img/"+ num_me + ".png";
+    document.getElementById(total_me+"me").src="./img/train-side.png";
+    
+    for (let hid_me = 0; hid_me < total_me; hid_me++) {
+    // console.log(hid_me);
+    document.getElementById(hid_me+"me").style.display="none"
+    }
+
+
+    document.getElementById("sainome_you").src= "./img/"+ num_you + ".png";
+    document.getElementById(total_you+"you").src="./img/train-side.png";
+
+    for (let hid_you = 0; hid_you < total_you; hid_you++) {
+    // console.log(hid_you);
+    document.getElementById(hid_you+"you").style.display="none"
+    }
+
+// 現在地
+ if (total_me==1){
+     $('#location').html('あなたの現在地は「春日野道駅」です。<br>(兵庫県神戸市中央区)<br><br>安藤忠雄が設計した兵庫県立美術館が近くにあります。同美術館では、現代美術や安藤忠雄がこれまで手掛けた建築の模型が展示されています。');
+     document.getElementById("station_img").src="./img/"+ total_me +"station.jpeg";
+ }
+ if (total_me==2){
+     $('#location').html('あなたの現在地は「王子公園駅」です。<br>(兵庫県神戸市灘区)<br><br>王子動物園が駅近くにあり、動物園では、ジャイアントパンダのタンタンを見ることが出来ます。');
+     document.getElementById("station_img").src="./img/" + total_me + "station.jpeg";
+ }
+ if (total_me==3){
+     $('#location').html('あなたの現在地は「六甲駅」です。<br>(兵庫県神戸市灘区)<br><br>20分ほど登ると神戸大学があり、更に北に登るとケーブルカーに乗って六甲山山頂まで行くことが出来ます。六甲山からの夜景は100万ドルの夜景と言われています。');
+     document.getElementById("station_img").src= "./img/" + total_me +"station.jpeg";
+ }
+ if (total_me==4){
+     $('#location').html('あなたの現在地は「御影駅」です。<br>(兵庫県神戸市東灘区)<br><br>財界の名士が邸宅を構え、日本一の富豪村と呼ばれた住吉村があった地域です。現在も乾邸をはじめとする大邸宅を見ることが出来ます。');
+     document.getElementById("station_img").src="./img/"+ total_me +"station.jpeg";
+ }
+ if (total_me==5){
+     $('#location').html('あなたの現在地は「岡本駅」です。<br>(兵庫県神戸市東灘区)<br><br>近くに大学があり、お洒落なカフェが多いところです。古くから梅が有名で、岡本梅林公園では40種、198本の梅の木を鑑賞することが出来ます');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==6){
+     $('#location').html('あなたの現在地は「芦屋川駅」です。<br>(兵庫県芦屋市)<br><br>全国でも有名なセレブの街で、駅から北に向かうと高級住宅街の六麓荘があります。アンリシャルパンティエの芦屋本店やカヌレで有名なダニエルが店を構えます。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==7){
+     $('#location').html('あなたの現在地は「夙川駅」です。<br>(兵庫県西宮市)<br><br>単線の甲陽線との乗り換え駅です。夙川駅の桜が有名で、春には毎年多くの人が花見に訪れます。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==8){
+     $('#location').html('あなたの現在地は「西宮北口駅」です。<br>(兵庫県西宮市)<br><br>宝塚線、今津線との乗り換え駅となっており、非常に大きい駅で、周辺には阪急百貨店や兵庫県芸術文化センターがあります。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==9){
+     $('#location').html('あなたの現在地は「武庫之荘駅」です。<br>(兵庫県尼崎市)<br><br>阪急電鉄が総面積6万坪の住宅地を売り出すために駅を設置したという経緯があり、駅周辺は阪神間モダニズムの面影を残す住宅地となっています');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==10){
+     $('#location').html('あなたの現在地は「塚口駅」です。<br>(兵庫県尼崎市)<br><br>伊丹線との乗り換え駅で、駅の両サイドには複合商業施設の塚口さんさんタウンが開業しています。いかりスーパーの本社があることで有名です。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==11){
+     $('#location').html('あなたの現在地は「園田駅」です。<br>(兵庫県尼崎市)<br><br>園田競馬場があり、レース開催日や馬券の場外発売日には駅前（北口側）からシャトルバスが運行され、来場客で混雑します。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==12){
+     $('#location').html('あなたの現在地は「神崎川駅」です。<br>(大阪府大阪市淀川区)<br><br>閑静な住宅街ですが、武田薬品神崎川倉庫跡地では、大規模なマンション開発が行われており、食品スーパーなどの商業施設もオープンしています。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==13){
+     $('#location').html('あなたの現在地は「十三駅」です。<br>(大阪府大阪市淀川区)<br><br>神戸線、宝塚線、京都線が集結し、3線からアクセス抜群の駅となっています。駅周辺には昭和の情緒を色濃く残す商店が数多く立ち並ぶ繁華街です。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ } 
+ if (total_me==14){
+     $('#location').html('あなたの現在地は「中津駅」です。<br>(大阪府大阪市北区)<br><br>梅田まで徒歩圏内であるものの住宅街が広がります。十三と共に、なにわ淀川花火大会の最寄駅となっており、開催日には観覧客で混雑します。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+ if (total_me==15){
+     $('#location').html('あなたの現在地は「大阪梅田駅」です。<br>(大阪府大阪市北区)<br><br>阪急電鉄最大のターミナル駅であり、世界初の駅直結型百貨店とされる阪急百貨店うめだ本店と直結しています。JR、阪神、大阪メトロに乗り換えられます。');
+     document.getElementById("station_img").src="./img/"+total_me+"station.jpeg";
+ }
+});
+
+
+</script>
+</body>
+</html>
